@@ -1,0 +1,64 @@
+CREATING SINGLE CART VIEWER
+
+from django.shortcuts import render
+
+# Import All The Product from models
+from .models import Product
+
+
+# Import Ceil
+from math import ceil
+
+
+""" Import command """
+from django.http import HttpResponse
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\SINGLE \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+def index(request):
+    products = Product.objects.all()
+    print(products)
+
+# logic
+    n = len(products)
+    nSlides = n//4 * ceil((n/4)-(n//4))
+
+    parms = {'no_of_Slides': nSlides, 'range': (range(1, nSlides)), 'product': products}
+
+    return render(request, 'shop/index.html', parms)
+
+
+def about(request):
+    return render(request, 'shop/about.html')
+
+
+
+
+
+    
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                 Single And Double Details 
+
+    
+def index(request):
+    products = Product.objects.all()
+    print(products)
+
+# logic
+    n = len(products)
+    nSlides = n//4 * ceil((n/4)-(n//4))
+
+    """ Single cart details show """
+
+    #parms = {'no_of_Slides': nSlides, 'range': (range(1, nSlides)), 'product': products}
+
+
+""" Double line cart Show Details """
+    allProds = [[products, range(1, nSlides), nSlides],
+                [products, range(1, nSlides), nSlides]
+                ] 
+parms = {'allProds': allProds}
+
+return render(request, 'shop/index.html', parms)
+

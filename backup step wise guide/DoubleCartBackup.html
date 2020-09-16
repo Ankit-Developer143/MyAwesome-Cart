@@ -1,0 +1,111 @@
+<!-- Skip Starting Part Because This All Present in basic.html -->
+
+
+
+<!-- Skip Starting Part Because This All Present in basic.html -->
+
+
+
+{% extends 'shop/basic.html' %} {% block css %} .col-md-3 { display: inline-block; margin-left: -4px; } .carousel-indicator .active { background-color: blue; } .col-md-3 img { width: 100%; height: 355px; } body .carousel-indicator li { background-color:
+blue; } body .carousel-control-prev, body .carousel-control-next { background-color: blue; } body .no-padding { padding-left: 0; padding-right: 0; } .carousel-control-prev, .carousel-control-next {top:auto; bottom:auto; }{% endblock %}
+
+<!-- Load Static for image import -->
+{% load static %} {% block body%}
+
+
+
+
+
+<!-- Skip navigation Part Because This All Present in basic.html -->
+<!-- For reference watch indexBackup.html -->
+
+
+
+
+<!--  UNORDERLIST  Slider-->
+<div class="container">
+    <!-- Multi-cart Using for loops again -->
+
+    {% for product,range,nSlides in allProds %}
+    <h1>{{product.0.category }}</h1><br>
+
+
+    <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+        <ul class="carousel-indicators">
+            <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+
+            <!-- Using ForLoops -->
+            <!-- range=(1,nSlides) -->
+
+            {% for i in range %}
+            <!-- Add New {{forloop.counter}} -->
+            <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+            {% endfor %}
+        </ul>
+
+
+
+
+
+
+
+        <div class="container carousel-inner no-padding">
+            <div class="carousel-item active">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src='/media/{{product.0.image}}' class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.0.product_name}}</h5>
+                            <p class="card-text">{{product.0.desc}}
+                            </p>
+                            <a href="#" class="btn btn-primary">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                {% for i in product|slice:"1:"%}
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{i.product_name}}</h5>
+                            <p class="card-text">{{i.desc}} </p>
+                            <a href="#" class="btn btn-primary">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- if loops divisible by 3 then start new item -->
+                {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+            </div>
+
+            <!-- Start New Item -->
+            <div class="carousel-item">
+                {% endif %} {% endfor %}
+            </div>
+        </div>
+
+
+        <!-- left and right control -->
+        <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a href="#demo{{forloop.counter}}" class="carousel-control-next" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+<!-- Skip Ending Part Because This All Present in basic.html -->
+
+
+
+<!-- Skip Ending Part Because This All Present in basic.html -->
+<!-- Skip Ending Part Because This All Present in basic.html -->
