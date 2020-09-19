@@ -9,13 +9,7 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
     <title>{% block title%}{% endblock %}</title>
     <style>
       /* Creating some block and details fill inside this block that block automatic inherited by About.html */
@@ -27,7 +21,7 @@
   <body>
     {% load static %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/shop/">My Awesome Cart</a>
+      <a class="navbar-brand" href="/shop/">MyAwesomeCart</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -55,6 +49,9 @@
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="/shop/tracker">Tracker</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/shop/checkout">Checkout</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="/shop/products">ProductView</a>

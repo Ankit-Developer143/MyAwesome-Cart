@@ -11,5 +11,6 @@ urlpatterns = [
     path("tracker/", views.tracker, name ="TrackingStatus"),
     path("search/", views.search, name ="Search"), 
     #Quck View  mapping through basic.html                                                        here key product are variable
-    path("products/<int:myid>", views.productView, name="ProductView")
+    path("products/<int:myid>", views.productView, name="ProductView"),
+    path("checkout/",views.checkout,name = "checkout")
 ]
